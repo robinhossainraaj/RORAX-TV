@@ -1,0 +1,6 @@
+{
+  "name": "RORAx-TV",
+  "description": "RORAx-TV Premium IPTV Streaming Platform with M3U parsing and HLS player support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

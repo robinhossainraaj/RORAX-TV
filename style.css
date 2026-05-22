@@ -1,0 +1,479 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #E50914;
+  --color-brand-glow: rgba(229, 9, 20, 0.4);
+  --color-glass: rgba(15, 15, 20, 0.7);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Base resets & dark mode styling */
+body {
+  background-color: #08080c;
+  color: #f3f4f6;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for Netflix styled flows */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252530;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E50914;
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: rgba(15, 15, 20, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(22, 22, 30, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.15), 0 0 1px rgba(229, 9, 20, 0.5);
+  background: rgba(26, 26, 36, 0.85);
+}
+
+/* Glow effects */
+.text-glow-red {
+  text-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
+}
+
+.border-glow-red {
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.2);
+}
+
+.border-glow-red:focus {
+  border-color: #E50914;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
+}
+
+/* Dynamic slider row styling (horizontal scroll no scrollbar) */
+.slider-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -scrollbar-width: none; /* Firefox */
+}
+
+.slider-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Custom visual components */
+.live-badge {
+  background-color: #E50914;
+  box-shadow: 0 0 8px #E50914;
+  animation: pulse-live 1.8s infinite;
+}
+
+@keyframes pulse-live {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.8);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(229, 9, 20, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0);
+  }
+}
+
+/* Skeleton loader animations */
+.skeleton {
+  background: linear-gradient(90deg, #161622 25%, #252538 50%, #161622 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  border-top-color: #E50914;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Category Filter Tabs Custom Style */
+.category-tab {
+  transition: all 0.2s ease-in-out;
+}
+
+.category-tab.active {
+  background-color: #E50914;
+  color: white;
+  box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
+}
+
+/* Custom Grid transitions */
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LIGHT THEME VARIABLES AND RULES */
+:root {
+  --color-brand: #E50914;
+  --color-brand-glow: rgba(229, 9, 20, 0.4);
+}
+
+/* Light Theme class mapping */
+:root.light {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+:root.light body {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+:root.light header {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light header .border-r,
+:root.light header .border-l {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light header a,
+:root.light header button {
+  color: #374151 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light header a:hover,
+:root.light header button:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+:root.light header .text-white {
+  color: #111827 !important;
+}
+
+:root.light header svg {
+  stroke: #374151 !important;
+}
+
+/* TV screen smiley face SVG in header logo should stay crisp */
+:root.light header svg.text-white,
+:root.light header svg .text-white {
+  color: #111827 !important;
+  fill: #111827 !important;
+}
+
+:root.light .logo svg {
+  text-shadow: none;
+}
+
+/* Light theme for headings & cards */
+:root.light h1,
+:root.light h2,
+:root.light h3,
+:root.light h4,
+:root.light h5,
+:root.light h6 {
+  color: #111827 !important;
+}
+
+:root.light p,
+:root.light .text-gray-400,
+:root.light .text-gray-500,
+:root.light .text-zinc-400,
+:root.light .text-zinc-500 {
+  color: #4b5563 !important;
+}
+
+:root.light .text-gray-300 {
+  color: #374151 !important;
+}
+
+/* Marquee / Welcome promo slider */
+:root.light #catalog-browsing-container > div.border {
+  border-color: rgba(229, 9, 20, 0.2) !important;
+  background-color: #fee2e2 !important; /* light red tint */
+}
+
+:root.light .animate-marquee {
+  color: #b91c1c !important; /* darker red for high contrast readability */
+}
+
+:root.light .animate-marquee .text-zinc-700 {
+  color: #f87171 !important;
+}
+
+/* Glass panel */
+:root.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  color: #111827 !important;
+}
+
+/* Stats items in info card */
+:root.light .glass-panel .bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Glass Card */
+:root.light .glass-card {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  color: #111827 !important;
+}
+
+:root.light .glass-card:hover {
+  background: #ffffff !important;
+  border-color: rgba(229, 9, 20, 0.4) !important;
+  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.1), 0 0 1px rgba(229, 9, 20, 0.3) !important;
+}
+
+:root.light .glass-card .bg-zinc-900\/40 {
+  background-color: #fafafa !important;
+}
+
+:root.light .glass-card .bg-zinc-950\/80 {
+  background-color: #f3f4f6 !important;
+}
+
+:root.light .glass-card h3 {
+  color: #1f2937 !important;
+}
+
+/* Featured / Playlist items inside track */
+:root.light #featured-slides-track > div {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Slide featured details overlay shadow */
+:root.light #featured-slides-track .bg-gradient-to-t {
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%) !important;
+}
+
+:root.light #featured-slides-track .text-white {
+  color: #111827 !important;
+}
+
+/* Carousel Dots and Sliders */
+:root.light .bg-zinc-850 {
+  background-color: #d1d5db !important;
+}
+
+/* Scroll buttons (category rows) */
+:root.light .bg-zinc-900 {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #4b5563 !important;
+}
+
+:root.light .bg-zinc-900:hover {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+/* Category drawer sidebar */
+:root.light #categories-drawer #drawer-panel {
+  background-color: #fafbfc !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light #categories-drawer .border-b,
+:root.light #categories-drawer .border-t {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light #categories-drawer .bg-white\/\[0\.02\] {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+:root.light #categories-drawer .bg-zinc-950 {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #1f2937 !important;
+}
+
+:root.light #categories-drawer .text-white {
+  color: #111827 !important;
+}
+
+:root.light #categories-drawer .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light #categories-drawer .bg-white\/5:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Category individual list item row (idle) */
+:root.light .category-row-btn {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.05) !important;
+  color: #374151 !important;
+}
+
+:root.light .category-row-btn:hover {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+/* Category Tab */
+:root.light .category-tab {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #374151 !important;
+}
+
+:root.light .category-tab:hover {
+  background-color: #f3f4f6 !important;
+}
+
+:root.light .category-tab.active {
+  background-color: #E50914 !important;
+  color: #ffffff !important;
+}
+
+/* Search bar overlay */
+:root.light #search-bar-overlay {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light #search-bar-overlay input {
+  background-color: #f3f4f6 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #111827 !important;
+}
+
+:root.light #search-bar-overlay input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Search counter badge inside input */
+:root.light #results-indicator {
+  background-color: rgba(229, 9, 20, 0.05) !important;
+  border-color: rgba(229, 9, 20, 0.15) !important;
+}
+
+/* Footer styling */
+:root.light footer {
+  background-color: #ffffff !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light footer .text-white {
+  color: #111827 !important;
+}
+
+:root.light footer .border-t {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Custom modal styling */
+:root.light #player-modal .glass-panel {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light #player-modal .bg-zinc-950 {
+  background-color: #ffffff !important;
+}
+
+:root.light #player-modal .border-b {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light #player-modal .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #1f2937 !important;
+}
+
+:root.light #player-modal .bg-white\/5:hover {
+  background-color: #E50914 !important;
+  color: #ffffff !important;
+}
+
+:root.light #player-loading-spinner {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root.light #player-play-overlay {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+:root.light #player-play-overlay span {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #111827 !important;
+}
+
+:root.light #player-error-alert {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+:root.light #player-error-alert .bg-zinc-850 {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+
+:root.light #player-error-alert .bg-zinc-850:hover {
+  background-color: #e5e7eb !important;
+}
+
